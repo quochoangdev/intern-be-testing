@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Categories {
+  id          String    @id 
+  name        String    
+  slug        String    @unique 
+  isActive    Boolean?  @default(false) @map("is_active")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  createdById String?   @map("created_by_id") 
+  updatedAt   DateTime? @map("updated_at")
+  updatedById String?   @map("updated_by_id") 
+
+  posts            Posts[]
+
+  @@index([createdById])
+  @@index([updatedById])
+  @@map("categories")
+}
+
+model Posts {
+  id          String    @id 
+  title       String    
+  slug        String    @unique 
+  excerpt     String    @default("")
+  content     String    @default("")
+  tags        String?   
+  author      String?   
+  isActive    Boolean?  @default(false) @map("is_active")
+  categoryId  String    @map("category_id") 
+  createdAt   DateTime  @default(now()) @map("created_at")
+  createdById String?   @map("created_by_id") 
+  updatedAt   DateTime? @map("updated_at")
+  updatedById String?   @map("updated_by_id") 
+
+  category    Categories?   @relation(fields: [categoryId], references: [id])
+  postsImages PostsImages[]
+
+  @@index([author])
+  @@index([categoryId])
+  @@index([createdById])
+  @@index([updatedById])
+  @@map("posts")
+}
+
+model PostsImages {
+  id          String    @id 
+  postId      String    @map("post_id") 
+  url         String    
+  createdAt   DateTime  @default(now()) @map("created_at")
+  createdById String?   @map("created_by_id") 
+  updatedAt   DateTime? @map("updated_at")
+  updatedById String?   @map("updated_by_id") 
+
+  post      Posts?      @relation(fields: [postId], references: [id])
+
+  @@index([postId])
+  @@index([createdById])
+  @@index([updatedById])
+  @@map("posts_images")
+}
+

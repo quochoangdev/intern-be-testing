@@ -1,0 +1,54 @@
+- Xử dụng chức năng phân trang truyền vào 2 query tham số
+    + page : trang hiện tại
+    + limit : giới hạn số lượng trả về
+- Xử dụng chức năng search truyền vào query 2 tham số
+    + search : tìm kiếm theo tên
+    + limit : giới hạn số lượng trả về (nếu không truyền limit mặc định lấy về tất cả số lượng tìm kiếm theo search)
+
+
+- Data demo
+    Data Categories
+    {
+        "id":"1",
+        "name":"categories 1",
+        "slug":"1"    
+    }
+
+    Data posts
+    {
+        "id":"1",
+        "title":"posts 1",
+        "slug":"1",
+        "excerpt":"excerpt 1",
+        "content":"content 1",
+        "tags":"tags 1",
+        "author":"author 1",
+        "categoryId":"1"
+    }
+
+- Để chạy dự án 
+    + npm start
+    
+- Api chạy localhost
+    + CRUD posts
+        - http://localhost:8000/api/v1/posts/create
+        - http://localhost:8000/api/v1/posts/read
+        - http://localhost:8000/api/v1/posts/update
+        - http://localhost:8000/api/v1/posts/delete
+    + CRUD categories
+        - http://localhost:8000/api/v1/categories/create
+        - http://localhost:8000/api/v1/categories/read
+        - http://localhost:8000/api/v1/categories/update
+        - http://localhost:8000/api/v1/categories/delete
+
+- Api chạy trực tiếp trên server
+    + CRUD posts
+        - https://intern-be-testing.onrender.com/api/v1/posts/create
+        - https://intern-be-testing.onrender.com/api/v1/posts/read
+        - https://intern-be-testing.onrender.com/api/v1/posts/update
+        - https://intern-be-testing.onrender.com/api/v1/posts/delete
+    + CRUD categories
+        - https://intern-be-testing.onrender.com/api/v1/categories/create
+        - https://intern-be-testing.onrender.com/api/v1/categories/read
+        - https://intern-be-testing.onrender.com/api/v1/categories/update
+        - https://intern-be-testing.onrender.com/api/v1/categories/delete
